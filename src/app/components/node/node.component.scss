@@ -1,0 +1,67 @@
+.node-content {
+  width: 150px;
+  height: 95px;
+}
+
+.header {
+  color: white;
+  padding: 0px 6px;
+}
+
+.subHeader {
+  position: relative;
+}
+
+.parameter {
+  position: absolute;
+  bottom: 0px;
+}
+
+.node.completed {
+  .node-content {
+    border: 2px solid #272771 !important;
+  }
+  .header {
+    background: #272771 !important;
+  }
+}
+
+.node.inProgress {
+  .node-content {
+    border: 2px solid #229641 !important; 
+  }
+  .header {
+    background: #229641 !important ;
+  }
+}
+
+.node.notStarted {
+  .node-content {
+    border: 2px solid #e28711 !important; 
+  }
+  .header {
+    background: #e28711 !important;
+  }
+}
+
+.workflow-cross {
+  background: red;
+  color: white;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1.4em;
+  height: 1.4em;
+  line-height: 1.4;
+  padding: 0; margin: 0;
+  display: inline-block;
+  overflow: hidden;
+  text-align: center;
+  border-radius: 100%;
+  transform: translateX(50%) translateY(-50%);
+  display: none;
+}
+
+.node:hover .workflow-cross {
+  display: block;
+}

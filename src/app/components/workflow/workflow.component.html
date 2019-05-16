@@ -1,0 +1,44 @@
+
+<button (click)="addNode()" class="addNew"> + Add new node</button>
+
+<div
+     (mouseup)="discardConnection()"
+     class="drag-boundary {{workflow && workflow.draggable ? 'draggable' : 'not-draggable' }}" id="main" #container>
+
+
+    <app-node *ngFor="let node of nodes"
+              (click)="openDialog(node)"
+              [node]="node"
+              [workflow]="workflow"
+              [gridSize]="gridSize"
+              [container]="container"></app-node>
+
+    <app-connection
+            *ngFor="let connection of connections"
+            (click)="getClickEvent(connection)"
+            [connection]="connection"
+            [workflow]="workflow"
+            [gridSize]="gridSize"
+            [color]="connection.color || lineColor"
+            [container]="container"></app-connection>
+
+    <!-- For ongoing connection -->
+    <app-connection
+            *ngIf="workflow.creatingConnection"
+            [connection]="workflow.creatingConnection"
+            [workflow]="workflow"
+            [gridSize]="gridSize"
+            [color]="workflow.creatingConnection.color || lineColor"
+            [container]="container">
+    </app-connection>
+
+</div>
+<div id="mySidenav" class="sidenav">
+        <div class="header"> <h5> Edit Details </h5><a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a></div>
+        <div class="status {{status}}">{{status}}</div><br />
+        <input type="text" class="off" name="header" [(ngModel)]="header" disabled/>
+        <input type="text" name="subheader" [(ngModel)]="subheader"/>
+        <input type="number" name="parameters" [(ngModel)]="parameters"/>
+
+        <button (click)="updateNode()" class="updateBtn">update</button>
+</div>

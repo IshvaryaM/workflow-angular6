@@ -1,0 +1,123 @@
+.drag-boundary {
+  height: -webkit-fill-available;
+  width: 100%;
+}
+
+$trans: transparent;
+$block: #e9f7fb;
+$line: #bedcff;
+$gridSize: 100px;
+$subdivisions: 5;
+$lineAlpha: .7;
+$sublineAlpha: .5;
+
+.drag-boundary {
+  background-color: $block;
+  background-image:
+          linear-gradient(rgba($line,$sublineAlpha) 1px, $trans 1px), /*sub horiz*/
+          linear-gradient($line 1px, $trans 1px), /*main horiz*/
+          linear-gradient(90deg, rgba($line,$sublineAlpha) 1px, $trans 1px), /*sub vert*/
+          linear-gradient(90deg, rgba($line,$lineAlpha) 1px, $trans 1px), /*main vert*/
+          linear-gradient($trans 3px, $block 3px, $block $gridSize - 2, $trans $gridSize - 2), /*nub horiz*/
+          linear-gradient(90deg, rgba($line,$lineAlpha) 3px, $trans 3px, $trans $gridSize - 2, rgba($line,$lineAlpha) $gridSize - 2) /*nub vert*/
+;
+  background-size:
+          $gridSize / $subdivisions $gridSize / $subdivisions,
+          $gridSize $gridSize,
+          $gridSize / $subdivisions $gridSize / $subdivisions,
+          $gridSize $gridSize,
+          $gridSize $gridSize,
+          $gridSize $gridSize;
+}
+
+/* sidebar navigation styles */
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  input.off {
+    cursor: not-allowed;
+  }
+  .header {
+    overflow: hidden;
+      h5 {
+      float: left;
+      padding: 4% 0px;
+      color: white
+    }
+  }
+}
+
+.addNew {
+  position: fixed;
+  top: 10px;
+  z-index: 10;
+  left: 10px;
+  background: #272771;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  font-size: 16px;
+  padding: 4px 16px;
+}
+
+.updateBtn {
+  background: #e9a72a;
+  color: #fff;
+  border: none;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  // position: absolute;
+  // top: 0;
+  // right: 25px;
+  // font-size: 36px;
+  // margin-left: 50px;
+  float: right;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+/* sidebar navigation styles */
+
+/* status text */
+
+.status.completed {
+    background: #272771 !important;
+    color: #fff;
+    display: inline;
+}
+
+.status.inProgress {
+    background: #229641 !important ;
+    color: #fff;
+    display: inline;
+}
+
+.status.notStarted {
+    background: #e28711 !important;
+    color: #fff;
+    display: inline;
+}
